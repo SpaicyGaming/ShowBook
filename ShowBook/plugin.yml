@@ -1,4 +1,5 @@
 main: io.github.spaicygaming.showbook.ShowBook
+softdepend: [ProtocolLib]
 
 author: SpaicyGaming
 name: ShowBook
@@ -6,5 +7,4 @@ version: 1.0
 
 commands:
     showbook:
-        description: Main command
-        aliases: [sb]
+       description: Main command
