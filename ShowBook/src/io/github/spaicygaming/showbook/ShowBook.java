@@ -15,7 +15,8 @@ public class ShowBook extends JavaPlugin {
 
 		// Dependencies
 		if (getServer().getPluginManager().getPlugin("ProtocolLib") == null) {
-			
+			getServer().getConsoleSender().sendMessage("[ShowBook] " + ChatColor.RED + "Plugin disabled due to no ProtolLib dependency found");
+			getServer().getPluginManager().disablePlugin(this);
 		}
 		
 		saveDefaultConfig();
