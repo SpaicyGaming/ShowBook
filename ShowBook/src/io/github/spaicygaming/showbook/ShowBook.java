@@ -4,15 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class ShowBook extends JavaPlugin {
 
 	private static ShowBook instance;
-
+	private ItemStack writtenBook;
+	
 	public void onEnable() {
 		instance = this;
-
+		
 		// Dependencies
 		if (getServer().getPluginManager().getPlugin("ProtocolLib") == null) {
 			getServer().getConsoleSender().sendMessage("[ShowBook] " + ChatColor.RED + "Plugin disabled due to no ProtolLib dependency found");
@@ -28,7 +32,8 @@ public class ShowBook extends JavaPlugin {
 
 		getServer().getPluginManager().registerEvents(new JoinListener(), this);
 		getCommand("showbook").setExecutor(new ShowBookCommands());
-
+		
+		writtenBook = buildBook();
 		getLogger().info("ShowBook has been enabled.");
 	}
 
@@ -39,7 +44,21 @@ public class ShowBook extends JavaPlugin {
 	public void onDisable() {
 		getLogger().info("ShowBook has been disabled.");
 	}
+	
+	private ItemStack buildBook() {
+		ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
+		BookMeta bookMeta = (BookMeta) getServer().getItemFactory().getItemMeta(Material.WRITTEN_BOOK);
 
+		bookMeta.setPages("random text in the first page");
+
+		book.setItemMeta(bookMeta);
+		return book;
+	}
+	
+	public ItemStack getWrittenBook(){
+		return writtenBook;
+	}
+	
 	// Chat Utils
 
 	public String c(String message) {
