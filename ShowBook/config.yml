@@ -3,6 +3,7 @@ helpMenu:
   - "&b/sb help &7-> &6Shows commands"
   - "&b/sb reload &7-> &6Reload the config"
   - ""
-  
+bookContent: "this is the text in the book adaidnaiudnmaoidmioadmio daoidmaoidmpoia"
+
 ##  NO NOT TOUCH  ##
 ConfigVersion: 1.0

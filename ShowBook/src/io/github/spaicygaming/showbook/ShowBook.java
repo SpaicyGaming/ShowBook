@@ -49,7 +49,7 @@ public class ShowBook extends JavaPlugin {
 		ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
 		BookMeta bookMeta = (BookMeta) getServer().getItemFactory().getItemMeta(Material.WRITTEN_BOOK);
 
-		bookMeta.setPages("random text in the first page");
+		bookMeta.setPages(getConfig().getString("bookContent"));;
 
 		book.setItemMeta(bookMeta);
 		return book;
